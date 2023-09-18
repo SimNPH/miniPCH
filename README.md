@@ -13,7 +13,7 @@ evaluated just with the time, probability, ...
 You can install the development version of miniPCH like so:
 
 ``` r
-devtools::install_git("")
+devtools::install_git("https://github.com/SimNPH/miniPCH.git")
 ```
 
 
