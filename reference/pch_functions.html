@@ -157,11 +157,11 @@ are checked only once and not at every function evaluation.</p>
 <span class="r-in"><span><span class="va">rpch_fun_cont</span>  <span class="op">&lt;-</span> <span class="fu">rpch_fun</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">rpch_fun_discr</span> <span class="op">&lt;-</span> <span class="fu">rpch_fun</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">0.1</span><span class="op">)</span>, discrete<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">rpch_fun_cont</span><span class="op">(</span><span class="fl">15</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.03575370 0.08335344 0.29756830 0.64397127 0.29252572 0.42107253</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.42033793 0.28886117 0.07123629 0.31665949 0.26443978 0.80870005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] 0.21809738 1.14505821 0.11583693</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.28694179 0.27180956 0.46547644 0.10721844 0.14322626 0.15813362</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.92826072 2.42421533 0.05596145 0.30187031 1.51932207 0.32367709</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] 1.75063053 0.20606188 1.42590763</span>
 <span class="r-in"><span><span class="fu">rpch_fun_discr</span><span class="op">(</span><span class="fl">15</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 1 1 1 2 1 1 1 1 1 1 1 1 2 1 1</span>
 <span class="r-in"><span><span class="va">pch_haz</span> <span class="op">&lt;-</span> <span class="fu">hpch_fun</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">pch_haz</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 2.0 2.0 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1</span>
@@ -176,9 +176,9 @@ are checked only once and not at every function evaluation.</p>
 <span class="r-in"><span><span class="va">my_pch</span><span class="op">$</span><span class="va">t</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0 3</span>
 <span class="r-in"><span><span class="va">my_pch</span><span class="op">$</span><span class="fu">r</span><span class="op">(</span><span class="fl">15</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 2.192837e-01 1.033993e-02 6.637549e-01 2.892221e-01 2.904003e-01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] 1.066594e+00 3.766608e-05 4.519248e-01 3.312844e-01 3.675306e-01</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] 5.760495e-01 7.607973e-01 7.238917e-01 4.309530e-02 2.963266e-02</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.02590177 0.18641737 0.37897736 0.31428508 0.18921775 1.60441063</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.04767557 0.50058763 0.10678021 0.32477368 0.23506002 0.20912514</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] 0.50266280 0.37353051 0.48826426</span>
 <span class="r-in"><span><span class="va">my_pch</span><span class="op">$</span><span class="fu">ch</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 2.0 4.0 6.0 6.1 6.2 6.3 6.4 6.5 6.6 6.7</span>
 </code></pre></div>
