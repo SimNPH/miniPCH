@@ -19,4 +19,5 @@ Suggests:
     covr,
     withr
 Config/testthat/edition: 3
-URL: https://simnph.github.io/miniPCH/
+URL: https://simnph.github.io/miniPCH/, https://github.com/SimNPH/miniPCH
+BugReports: https://github.com/SimNPH/miniPCH/issues/
