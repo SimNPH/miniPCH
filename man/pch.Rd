@@ -35,6 +35,8 @@ spch(q, t, lambda)
 
 \item{p}{vector of probabilities}
 
+\item{n}{number of random numbers}
+
 \item{discrete}{round survival times to whole numbers}
 }
 \value{
@@ -75,12 +77,12 @@ with piece-wise constant hazards (picewise exponential distributions).
 
 }}
 \examples{
-dpch(1:10, c(0, 3), c(2, 0.1)
-ppch(1:10, c(0, 3), c(2, 0.1)
-qpch(seq(0,1, by=0.1), c(0, 3), c(2, 0.1)
-rpch(15, c(0, 3), c(2, 0.1)
-rpch(15, c(0, 3), c(2, 0.1, discrete=TRUE)
-hpch(1:10, c(0, 3), c(2, 0.1)
-chpch(1:10, c(0, 3), c(2, 0.1)
-ppch(1:10, c(0, 3), c(2, 0.1)
+dpch(1:10, c(0, 3), c(2, 0.1))
+ppch(1:10, c(0, 3), c(2, 0.1))
+qpch(seq(0,1, by=0.1), c(0, 3), c(2, 0.1))
+rpch(15, c(0, 3), c(2, 0.1))
+rpch(15, c(0, 3), c(2, 0.1), discrete=TRUE)
+hpch(1:10, c(0, 3), c(2, 0.1))
+chpch(1:10, c(0, 3), c(2, 0.1))
+ppch(1:10, c(0, 3), c(2, 0.1))
 }

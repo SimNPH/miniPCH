@@ -15,7 +15,7 @@
 #' @export
 #'
 #' @examples
-#' dpch(1:10, c(0, 3), c(2, 0.1)
+#' dpch(1:10, c(0, 3), c(2, 0.1))
 dpch <- function(x, t, lambda){
   check_t_lambda(t, lambda)
   .Call("_miniPCH_pdfFunCpp", PACKAGE="miniPCH", t, lambda, x)
@@ -31,7 +31,7 @@ dpch <- function(x, t, lambda){
 #' @export
 #'
 #' @examples
-#' ppch(1:10, c(0, 3), c(2, 0.1)
+#' ppch(1:10, c(0, 3), c(2, 0.1))
 ppch <- function(q, t, lambda){
   check_t_lambda(t, lambda)
   .Call("_miniPCH_cdfFunCpp", PACKAGE="miniPCH", t, lambda, q)
@@ -47,7 +47,7 @@ ppch <- function(q, t, lambda){
 #' @export
 #'
 #' @examples
-#' qpch(seq(0,1, by=0.1), c(0, 3), c(2, 0.1)
+#' qpch(seq(0,1, by=0.1), c(0, 3), c(2, 0.1))
 qpch <- function(p, t, lambda){
   check_t_lambda(t, lambda)
   checkmate::assert_numeric(p, lower=0, upper=1)
@@ -56,7 +56,7 @@ qpch <- function(p, t, lambda){
 
 #' @describeIn pch random samples of survival distributions with piece-wise constant hazards
 #'
-#' @param p vector of probabilities
+#' @param n number of random numbers
 #' @param t vector of left interval borders
 #' @param lambda vector of hazards
 #' @param discrete round survival times to whole numbers
@@ -65,8 +65,8 @@ qpch <- function(p, t, lambda){
 #' @export
 #'
 #' @examples
-#' rpch(15, c(0, 3), c(2, 0.1)
-#' rpch(15, c(0, 3), c(2, 0.1, discrete=TRUE)
+#' rpch(15, c(0, 3), c(2, 0.1))
+#' rpch(15, c(0, 3), c(2, 0.1), discrete=TRUE)
 rpch <- function(n, t, lambda, discrete=FALSE){
   check_t_lambda(t, lambda)
   if(discrete){
@@ -85,7 +85,7 @@ rpch <- function(n, t, lambda, discrete=FALSE){
 #' @export
 #'
 #' @examples
-#' hpch(1:10, c(0, 3), c(2, 0.1)
+#' hpch(1:10, c(0, 3), c(2, 0.1))
 hpch <- function(x, t, lambda){
   check_t_lambda(t, lambda)
   .Call("_miniPCH_hazFunCpp", PACKAGE="miniPCH", t, lambda, x)
@@ -101,7 +101,7 @@ hpch <- function(x, t, lambda){
 #' @export
 #'
 #' @examples
-#' chpch(1:10, c(0, 3), c(2, 0.1)
+#' chpch(1:10, c(0, 3), c(2, 0.1))
 chpch <- function(x, t, lambda){
   check_t_lambda(t, lambda)
   .Call("_miniPCH_cumhazFunCpp", PACKAGE="miniPCH", t, lambda, x)
@@ -117,7 +117,7 @@ chpch <- function(x, t, lambda){
 #' @export
 #'
 #' @examples
-#' ppch(1:10, c(0, 3), c(2, 0.1)
+#' ppch(1:10, c(0, 3), c(2, 0.1))
 spch <- function(q, t, lambda){
   check_t_lambda(t, lambda)
   .Call("_miniPCH_survFunCpp", PACKAGE="miniPCH", t, lambda, q)
