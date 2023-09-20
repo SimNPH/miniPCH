@@ -20,7 +20,7 @@ are checked only once and not at every function evaluation."><!-- mathjax --><sc
     
     <a class="navbar-brand me-2" href="../index.html">miniPCH</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -157,11 +157,11 @@ are checked only once and not at every function evaluation.</p>
 <span class="r-in"><span><span class="va">rpch_fun_cont</span>  <span class="op">&lt;-</span> <span class="fu">rpch_fun</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">rpch_fun_discr</span> <span class="op">&lt;-</span> <span class="fu">rpch_fun</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">0.1</span><span class="op">)</span>, discrete<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">rpch_fun_cont</span><span class="op">(</span><span class="fl">15</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.12789225 0.79701994 1.80377870 0.28239228 0.31421642 0.03346501</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 1.19090694 0.30180569 0.16479902 0.22694683 0.23535820 0.38636489</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] 0.22361093 0.03026419 0.89504803</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.92023751 0.02015711 0.26932134 1.42496946 0.63216971 0.81319308</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.33499099 1.13980107 0.77335894 0.04143902 0.62733091 0.97260318</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] 0.82547608 0.07470358 0.92614741</span>
 <span class="r-in"><span><span class="fu">rpch_fun_discr</span><span class="op">(</span><span class="fl">15</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 1 1 1 1 2 1 2 1 1 1 1 1 1 1 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1</span>
 <span class="r-in"><span><span class="va">pch_haz</span> <span class="op">&lt;-</span> <span class="fu">hpch_fun</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">pch_haz</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 2.0 2.0 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1</span>
@@ -176,9 +176,9 @@ are checked only once and not at every function evaluation.</p>
 <span class="r-in"><span><span class="va">my_pch</span><span class="op">$</span><span class="va">t</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0 3</span>
 <span class="r-in"><span><span class="va">my_pch</span><span class="op">$</span><span class="fu">r</span><span class="op">(</span><span class="fl">15</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.21388243 0.28766965 0.14046499 0.39990275 0.04349778 0.37697959</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.16872849 0.43339748 0.82860448 0.38381901 0.33722359 0.43199560</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] 0.29652052 0.42257097 0.34052812</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.62139670 0.99707627 1.33872496 0.41822958 0.35612934 0.60787073</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.01519452 0.01505084 0.41943267 0.59058525 2.23087320 0.13780746</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] 0.06931082 0.81323716 0.36057038</span>
 <span class="r-in"><span><span class="va">my_pch</span><span class="op">$</span><span class="fu">ch</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 2.0 4.0 6.0 6.1 6.2 6.3 6.4 6.5 6.6 6.7</span>
 </code></pre></div>
