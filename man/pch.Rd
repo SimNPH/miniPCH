@@ -40,19 +40,19 @@ spch(q, t, lambda)
 \item{discrete}{round survival times to whole numbers}
 }
 \value{
-`dpch` gives the density evaluated at `x`.
+\code{dpch} gives the density evaluated at \code{x}.
 
-`ppch` gives the distribution function evaluated at `q`.
+\code{ppch} gives the distribution function evaluated at \code{q}.
 
-`qpch` gives the `p`-quantiles.
+\code{qpch} gives the \code{p}-quantiles.
 
-`rpch` gives `n` random numbers.
+\code{rpch} gives \code{n} random numbers.
 
-`hpch` gives the hazard function evaluated at `x`.
+\code{hpch} gives the hazard function evaluated at \code{x}.
 
-`chpch` gives the cumulative hazard function evaluated at `x`.
+\code{chpch} gives the cumulative hazard function evaluated at \code{x}.
 
-`dpch` gives the survival function evaluated at `q`.
+\code{dpch} gives the survival function evaluated at \code{q}.
 }
 \description{
 Densitiy, distribution function, quantiles, random numbers, hazard function,

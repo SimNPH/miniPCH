@@ -35,19 +35,19 @@ pch_functions(t, lambda, discrete = FALSE)
 \item{discrete}{round survival times to whole numbers in RNG}
 }
 \value{
-`dpch_fun` gives the density.
+\code{dpch_fun} gives the density.
 
-`ppch_fun` gives the distribution function
+\code{ppch_fun} gives the distribution function
 
-`qpch_fun` gives the quantile function.
+\code{qpch_fun} gives the quantile function.
 
-`rpch_fun` gives a function to sample from the given distribution.
+\code{rpch_fun} gives a function to sample from the given distribution.
 
-`hpch_fun` gives the hazard function.
+\code{hpch_fun} gives the hazard function.
 
-`chpch_fun` gives the cumulative hazard function.
+\code{chpch_fun} gives the cumulative hazard function.
 
-`spch_fun` gives the survival function.
+\code{spch_fun} gives the survival function.
 
 an object of class "miniPCH"
 }
@@ -57,7 +57,7 @@ cumulative hazard function and survival function of survival distributions
 with piece-wise constant hazards (picewise exponential distributions).
 
 Those functions return functions of one parameter that can be evaluated to
-give the density, distribution function, ... The parameters `t` and `lambda`
+give the density, distribution function, ... The parameters \code{t} and \code{lambda}
 are checked only once and not at every function evaluation.
 }
 \section{Functions}{
@@ -100,5 +100,5 @@ my_pch$r(15)
 my_pch$ch(1:10)
 }
 \seealso{
-[pch]
+\link{pch}
 }
