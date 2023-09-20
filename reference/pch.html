@@ -106,25 +106,25 @@ with piece-wise constant hazards (picewise exponential distributions).</p>
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>`dpch` gives the density evaluated at `x`.</p>
+<p><code>dpch</code> gives the density evaluated at <code>x</code>.</p>
 
 
-<p>`ppch` gives the distribution function evaluated at `q`.</p>
+<p><code>ppch</code> gives the distribution function evaluated at <code>q</code>.</p>
 
 
-<p>`qpch` gives the `p`-quantiles.</p>
+<p><code>qpch</code> gives the <code>p</code>-quantiles.</p>
 
 
-<p>`rpch` gives `n` random numbers.</p>
+<p><code>rpch</code> gives <code>n</code> random numbers.</p>
 
 
-<p>`hpch` gives the hazard function evaluated at `x`.</p>
+<p><code>hpch</code> gives the hazard function evaluated at <code>x</code>.</p>
 
 
-<p>`chpch` gives the cumulative hazard function evaluated at `x`.</p>
+<p><code>chpch</code> gives the cumulative hazard function evaluated at <code>x</code>.</p>
 
 
-<p>`dpch` gives the survival function evaluated at `q`.</p>
+<p><code>dpch</code> gives the survival function evaluated at <code>q</code>.</p>
     </div>
     <div class="section level2">
     <h2 id="functions">Functions<a class="anchor" aria-label="anchor" href="#functions"></a></h2>
@@ -150,11 +150,11 @@ with piece-wise constant hazards (picewise exponential distributions).</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.00000000 0.05268026 0.11157178 0.17833747 0.25541281 0.34657359</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.45814537 0.60198640 0.80471896 1.15129255        Inf</span>
 <span class="r-in"><span><span class="fu">rpch</span><span class="op">(</span><span class="fl">15</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.46211665 1.47505922 0.69760932 0.56042540 0.41182019 0.29834348</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.12566558 0.06067134 0.11486298 0.06731474 0.15051250 0.30438624</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] 0.22429718 0.29083482 0.81388349</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.08165635 0.01931266 0.41592659 0.50331701 0.32283488 2.08936034</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.12115779 0.49266646 0.03547596 0.61583572 0.78815157 0.77211722</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] 0.40876738 1.80894535 0.14088227</span>
 <span class="r-in"><span><span class="fu">rpch</span><span class="op">(</span><span class="fl">15</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">0.1</span><span class="op">)</span>, discrete<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1]  2  1  1  2  1  1  1  1  1  1  1  1  1  1 11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1</span>
 <span class="r-in"><span><span class="fu">hpch</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 2.0 2.0 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1</span>
 <span class="r-in"><span><span class="fu">chpch</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span></span></span>
@@ -169,7 +169,7 @@ with piece-wise constant hazards (picewise exponential distributions).</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p><p>Developed by Tobias Fellinger.</p>
+  <p></p><p>Developed by Tobias Fellinger, Florian Klinglmueller.</p>
 </div>
 
 <div class="pkgdown-footer-right">
