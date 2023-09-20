@@ -101,16 +101,4 @@ my_pch$ch(1:10)
 }
 \seealso{
 [pch]
-
-[pch]
-
-[pch]
-
-[pch]
-
-[pch]
-
-[pch]
-
-[pch]
 }

@@ -29,7 +29,6 @@ dpch_fun <- function(t, lambda){
 }
 
 #' @describeIn pch_functions distribution function of survival distributions with piece-wise constant hazards
-#' @seealso [pch]
 #'
 #' @param t vector of left interval borders
 #' @param lambda vector of hazards
@@ -48,7 +47,6 @@ ppch_fun <- function(t, lambda){
 }
 
 #' @describeIn pch_functions quantile function of survival distributions with piece-wise constant hazards
-#' @seealso [pch]
 #'
 #' @param t vector of left interval borders
 #' @param lambda vector of hazards
@@ -68,7 +66,6 @@ qpch_fun <- function(t, lambda){
 }
 
 #' @describeIn pch_functions RNG function of survival distributions with piece-wise constant hazards
-#' @seealso [pch]
 #'
 #' @param t vector of left interval borders
 #' @param lambda vector of hazards
@@ -96,7 +93,6 @@ rpch_fun <- function(t, lambda, discrete=FALSE){
 }
 
 #' @describeIn pch_functions hazard function of survival distributions with piece-wise constant hazards
-#' @seealso [pch]
 #'
 #' @param t vector of left interval borders
 #' @param lambda vector of hazards
@@ -115,7 +111,6 @@ hpch_fun <- function(t, lambda){
 }
 
 #' @describeIn pch_functions cumulative hazard function of survival distributions with piece-wise constant hazards
-#' @seealso [pch]
 #'
 #' @param t vector of left interval borders
 #' @param lambda vector of hazards
@@ -134,7 +129,6 @@ chpch_fun <- function(t, lambda){
 }
 
 #' @describeIn pch_functions survival function of survival distributions with piece-wise constant hazards
-#' @seealso [pch]
 #'
 #' @param t vector of left interval borders
 #' @param lambda vector of hazards
