@@ -152,7 +152,8 @@ spch_fun <- function(t, lambda){
 #' @param lambda vector of hazards
 #' @param discrete round survival times to whole numbers in RNG
 #'
-#' @return an object of class "miniPCH"
+#' @return `pch_functions` gives an object of class "miniPCH" that contains the
+#'   arguments and hazard, survival, ... functions.
 #' @export
 #'
 #' @examples
