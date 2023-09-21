@@ -2,7 +2,8 @@
 
 <!-- badges: start -->
 [![Codecov test coverage](https://codecov.io/gh/SimNPH/miniPCH/branch/main/graph/badge.svg)](https://app.codecov.io/gh/SimNPH/miniPCH?branch=main)
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![CRAN status](https://www.r-pkg.org/badges/version/miniPCH)](https://CRAN.R-project.org/package=miniPCH)
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 <!-- badges: end -->
 
 This package provides functionality for survival functions with piece-wise
