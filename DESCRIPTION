@@ -13,7 +13,7 @@ Imports:
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 LinkingTo: 
-    Rcpp
+    Rcpp, RcppArmadillo
 Suggests: 
     testthat (>= 3.0.0),
     covr,
