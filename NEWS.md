@@ -1,3 +1,7 @@
+# miniPCH 0.3.0
+
+* Added multi-state models
+
 # miniPCH 0.2.0
 
 * First CRAN submission
