@@ -6,7 +6,7 @@
 \alias{hmstate}
 \alias{chmstate}
 \alias{smstate}
-\title{Survival Distributions with piece-wise Constant Hazards}
+\title{Survival Distributions with piece-wise constant hazards and multiple states}
 \usage{
 dmstate(x, t, Q, pi, abs)
 

@@ -49,7 +49,7 @@ pch_functions(t, lambda, discrete = FALSE)
 
 \code{spch_fun} gives the survival function.
 
-an object of class "miniPCH"
+\code{pch_functions} gives an object of class "miniPCH"
 }
 \description{
 Densitiy, distribution function, quantiles, random numbers, hazard function,

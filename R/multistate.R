@@ -1,4 +1,4 @@
-#' Survival Distributions with piece-wise Constant Hazards
+#' Survival Distributions with piece-wise constant hazards and multiple states
 #'
 #' @description
 #' Densitiy, distribution function, quantiles, random numbers, hazard function,
