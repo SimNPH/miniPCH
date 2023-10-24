@@ -4,6 +4,7 @@
 #ifndef RCPP_miniPCH_RCPPEXPORTS_H_GEN_
 #define RCPP_miniPCH_RCPPEXPORTS_H_GEN_
 
+#include <RcppArmadillo.h>
 #include <Rcpp.h>
 
 namespace miniPCH {

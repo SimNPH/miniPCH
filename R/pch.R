@@ -113,7 +113,7 @@ chpch <- function(x, t, lambda){
 #' @param t vector of left interval borders
 #' @param lambda vector of hazards
 #'
-#' @return `dpch` gives the survival function evaluated at `q`.
+#' @return `spch` gives the survival function evaluated at `q`.
 #' @export
 #'
 #' @examples
