@@ -10,7 +10,7 @@
 #' give the density, distribution function, ... The parameters `t`, `Q`, `pi`
 #' and `abs` are checked only once and not at every function evaluation.
 #'
-#' @seealso [mstate]
+#' @seealso [dmstate]
 #'
 #' @param t vector of left interval borders
 #' @param Q Q-matrices of the process, see details

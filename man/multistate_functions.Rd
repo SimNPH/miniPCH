@@ -107,5 +107,5 @@ t <- seq(0,20, by=0.1)
 plot(t, my_obj$d(t), type="l")
 }
 \seealso{
-\link{mstate}
+\link{dmstate}
 }

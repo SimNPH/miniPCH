@@ -28,6 +28,8 @@ smstate(q, t, Q, pi, abs)
 \item{pi}{initial distribution}
 
 \item{abs}{indicator vector of absorbing states, see details}
+
+\item{q}{vector of quantiles}
 }
 \value{
 \code{dmstate} gives the density evaluated at \code{x}.

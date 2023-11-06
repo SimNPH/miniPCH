@@ -4,7 +4,7 @@
 #' Densitiy, distribution function, hazard function, cumulative hazard function
 #' and survival function of multi-state survival functions.
 #'
-#' @describeIn mstate density of survival distributions for a piece-wise exponential multi-state model
+#' @describeIn dmstate density of survival distributions for a piece-wise exponential multi-state model
 #'
 #' @param x vector of quantiles
 #' @param t vector of left interval borders
@@ -158,7 +158,9 @@ dmstate <- function(x, t, Q, pi, abs){
   .Call("_miniPCH_pdfFunCpp_multistate", PACKAGE="miniPCH", t, Q, pi, abs, x)
 }
 
-#' @describeIn mstate distribution function of survival distributions for a piece-wise exponential multi-state model
+#' @describeIn dmstate distribution function of survival distributions for a piece-wise exponential multi-state model
+#'
+#' @param q vector of quantiles
 #'
 #' @return `pmstate` gives the distribution function evaluated at `q`.
 #' @export
@@ -167,7 +169,7 @@ pmstate <- function(q, t, Q, pi, abs){
   .Call("_miniPCH_cdfFunCpp_multistate", PACKAGE="miniPCH", t, Q, pi, abs, q)
 }
 
-#' @describeIn mstate hazard of survival distributions for a piece-wise exponential multi-state model
+#' @describeIn dmstate hazard of survival distributions for a piece-wise exponential multi-state model
 #'
 #' @return `hmstate` gives the hazard function evaluated at `x`.
 #' @export
@@ -176,7 +178,7 @@ hmstate <- function(x, t, Q, pi, abs){
   .Call("_miniPCH_hazFunCpp_multistate", PACKAGE="miniPCH", t, Q, pi, abs, x)
 }
 
-#' @describeIn mstate cumulative hazard of survival distributions for a piece-wise exponential multi-state model
+#' @describeIn dmstate cumulative hazard of survival distributions for a piece-wise exponential multi-state model
 #'
 #' @return `chmstate` gives the cumulative hazard function evaluated at `x`.
 #' @export
@@ -185,7 +187,7 @@ chmstate <- function(x, t, Q, pi, abs){
   .Call("_miniPCH_cumhazFunCpp_multistate", PACKAGE="miniPCH", t, Q, pi, abs, x)
 }
 
-#' @describeIn mstate survival function of survival distributions for a piece-wise exponential multi-state model
+#' @describeIn dmstate survival function of survival distributions for a piece-wise exponential multi-state model
 #'
 #' @return `smstate` gives the survival function evaluated at `q`.
 #' @export
