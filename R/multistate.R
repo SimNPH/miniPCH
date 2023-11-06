@@ -18,7 +18,9 @@
 #' an N x N Q-matrix. Each row of the Q-matrix contains the hazard-rates for
 #' transitioning from the respective state to each other state in the
 #' off-diagonal elements. The diagonal element is minus the sum of the other
-#' elements (such that the row sums are 0 for each row).
+#' elements (such that the row sums are 0 for each row). (See Norris (1997) Part
+#' 2, Continuous-time Markov chains I, for the definition of Q-matrices and the
+#' theory of continuous time markov chains.)
 #'
 #' `abs` is a vector that is one for each absorbing state that corresponds to an
 #' event of interest and zero everywhere else. With this different events of
@@ -37,6 +39,13 @@
 #' states is `pi`.
 #'
 #' @return `dmstate` gives the density evaluated at `x`.
+#'
+#' @references
+#'
+#' Norris, J. R. (1997)
+#' \emph{Markov Chains}
+#' Cambridge University Press
+#'
 #' @export
 #'
 #' @examples

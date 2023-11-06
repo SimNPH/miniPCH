@@ -52,7 +52,9 @@ and N is the number of states. Every slice of Q along the third dimension is
 an N x N Q-matrix. Each row of the Q-matrix contains the hazard-rates for
 transitioning from the respective state to each other state in the
 off-diagonal elements. The diagonal element is minus the sum of the other
-elements (such that the row sums are 0 for each row).
+elements (such that the row sums are 0 for each row). (See Norris (1997) Part
+2, Continuous-time Markov chains I, for the definition of Q-matrices and the
+theory of continuous time markov chains.)
 
 \code{abs} is a vector that is one for each absorbing state that corresponds to an
 event of interest and zero everywhere else. With this different events of
@@ -197,4 +199,9 @@ plot(t, smstate(t, Tint, Q, pi, abs), type="l")
 plot(t, dmstate(t, Tint, Q, pi, abs), type="l")
 plot(t, hmstate(t, Tint, Q, pi, abs), type="l", ylim=c(0,0.2))
 plot(t, chmstate(t, Tint, Q, pi, abs), type="l")
+}
+\references{
+Norris, J. R. (1997)
+\emph{Markov Chains}
+Cambridge University Press
 }
