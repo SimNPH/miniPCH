@@ -44,9 +44,12 @@ multistate_functions(t, Q, pi, abs)
 \code{multistate_functions} gives an object of class "miniPCH"
 }
 \description{
-Survival Distributions with piece-wise Constant Hazards and multiple states (function factories)
+Densitiy, distribution function, hazard function, cumulative hazard function
+and survival function of multi-state survival functions.
 
-Object with all functions of a survival distribution with piece-wise constant hazards and multiple states
+Those functions return functions of one parameter that can be evaluated to
+give the density, distribution function, ... The parameters \code{t}, \code{Q}, \code{pi}
+and \code{abs} are checked only once and not at every function evaluation.
 }
 \section{Functions}{
 \itemize{

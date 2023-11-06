@@ -41,9 +41,8 @@ smstate(q, t, Q, pi, abs)
 \code{smstate} gives the survival function evaluated at \code{q}.
 }
 \description{
-Densitiy, distribution function, quantiles, random numbers, hazard function,
-cumulative hazard function and survival function of multi-state survival
-functions.
+Densitiy, distribution function, hazard function, cumulative hazard function
+and survival function of multi-state survival functions.
 }
 \details{
 \code{Q} is an array of dimensions N x N x M where M is the number of time intervals
@@ -51,12 +50,21 @@ and N is the number of states. Every slice of Q along the third dimension is
 an N x N Q-matrix. Each row of the Q-matrix contains the hazard-rates for
 transitioning from the respective state to each other state in the
 off-diagonal elements. The diagonal element is minus the sum of the other
-elements.
+elements (such that the row sums are 0 for each row).
 
-\code{abs} is a vector that is 1 for each absorbing state that corresponds to an
-event of interest and 0 everywhere else.
+\code{abs} is a vector that is one for each absorbing state that corresponds to an
+event of interest and zero everywhere else. With this different events of
+interest can be encoded for the same model. For example overall survival and
+progression free survival can be encoded by setting \code{abs} to one in the
+"death" state or the "death" and the "progressed disease" state and leaving
+\code{Q} and \code{pi} the same.
 
-The densities, distribution functions, etc. now correspond to the event of
+The initial distribution \code{pi} can be used to set the probabilities of
+starting in different stages. The starting distribution in combination with
+\code{Q} can be used to model sub-populations. The corresponding values of \code{pi}
+are then the prevalence of the sub-populations in the initial state.
+
+The densities, distribution functions, ... now correspond to the event of
 entering one of the absorbing states when the initial distribution in the
 states is \code{pi}.
 }
@@ -74,6 +82,7 @@ states is \code{pi}.
 
 }}
 \examples{
+# Example 1: Proportional Hazards
 Tint <- 0
 Q <- matrix(
   c(
@@ -96,6 +105,7 @@ plot(t, dmstate(t, Tint, Q, pi, abs), type="l")
 plot(t, hmstate(t, Tint, Q, pi, abs), type="l", ylim=c(0,1))
 plot(t, chmstate(t, Tint, Q, pi, abs), type="l")
 
+# Example 2: Disease Progression
 Tint <- 0
 Q <- matrix(
   c(
@@ -106,19 +116,30 @@ Q <- matrix(
 )
 dim(Q) <- c(3,3,1)
 pi <- c(1,0,0)
-abs <- c(0,0,1)
+abs_os  <- c(0,0,1)
+abs_pfs <- c(0,1,1)
 
 t <- seq(0,20, by=0.1)
 
 par(mfrow=c(3,2))
 plot.new()
-text(0.5,0.5,"example 2 disease progression")
-plot(t, pmstate(t, Tint, Q, pi, abs), type="l")
-plot(t, smstate(t, Tint, Q, pi, abs), type="l")
-plot(t, dmstate(t, Tint, Q, pi, abs), type="l")
-plot(t, hmstate(t, Tint, Q, pi, abs), type="l", ylim=c(0,1))
-plot(t, chmstate(t, Tint, Q, pi, abs), type="l")
+text(0.5,0.5,"example 2a disease progression\noverall survival")
+plot(t, pmstate(t, Tint, Q, pi, abs_os), type="l")
+plot(t, smstate(t, Tint, Q, pi, abs_os), type="l")
+plot(t, dmstate(t, Tint, Q, pi, abs_os), type="l")
+plot(t, hmstate(t, Tint, Q, pi, abs_os), type="l", ylim=c(0,1))
+plot(t, chmstate(t, Tint, Q, pi, abs_os), type="l")
 
+par(mfrow=c(3,2))
+plot.new()
+text(0.5,0.5,"example 2b disease progression\nprogression-free survival")
+plot(t, pmstate(t, Tint, Q, pi, abs_pfs), type="l")
+plot(t, smstate(t, Tint, Q, pi, abs_pfs), type="l")
+plot(t, dmstate(t, Tint, Q, pi, abs_pfs), type="l")
+plot(t, hmstate(t, Tint, Q, pi, abs_pfs), type="l", ylim=c(0,1))
+plot(t, chmstate(t, Tint, Q, pi, abs_pfs), type="l")
+
+# Example 3: Sub-Populations
 Tint <- 0
 Q <- matrix(
   c(
@@ -135,7 +156,7 @@ t <- seq(0, 40, by=0.1)
 
 par(mfrow=c(3,2))
 plot.new()
-text(0.5,0.5,"example 3 subgroups")
+text(0.5,0.5,"example 3 sub-populations")
 plot(t, pmstate(t, Tint, Q, pi, abs), type="l")
 plot(t, smstate(t, Tint, Q, pi, abs), type="l")
 plot(t, dmstate(t, Tint, Q, pi, abs), type="l")
@@ -143,6 +164,7 @@ plot(t, hmstate(t, Tint, Q, pi, abs), type="l", ylim=c(0,1))
 plot(t, chmstate(t, Tint, Q, pi, abs), type="l")
 
 
+# Example 4: Delayed Effect in one group and immediate effect in the other group
 Tint <- c(0,20)
 Q <- array(NA_real_, dim=c(3,3,2))
 Q[,,1] <- matrix(

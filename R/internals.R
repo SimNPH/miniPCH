@@ -23,7 +23,8 @@ check_t_lambda <- function(t, lambda){
 #
 # @details
 # check if all objects have compatible size, sign and order
-# also check if pi is a distribution, abs is an indicator vector and Q is a Q matrix
+# check if pi is a distribution, abs is an indicator vector and Q is a Q matrix
+# check if abs corresponds to absorbing sets in each timestep
 #
 # @return TRUE invisibly
 check_t_Q_pi_abs <- function(t, Q, pi, abs){
@@ -50,6 +51,14 @@ check_t_Q_pi_abs <- function(t, Q, pi, abs){
   checkmate::assert_numeric(apply(Q, 3, rowSums), lower=-.Machine$double.eps, upper=.Machine$double.eps)
   checkmate::assert_numeric(apply(Q, 3, diag), upper=.Machine$double.eps)
   checkmate::assert_numeric(apply(Q, 3, \(x){diag(x) <- 0; x}), lower=-.Machine$double.eps)
+
+  # check if abs corresponds to set of absorbing states
+  if( any(apply(Q, 3, \(Q_){
+    # starting in abs can we reach a state outside of abs?
+    (abs %*% Q_ %*% abs) != 0
+  })) ){
+    stop('"abs" does not correspond to absorbing states of "Q" in each time interval')
+  }
 
   invisible(TRUE)
 }

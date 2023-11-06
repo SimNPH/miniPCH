@@ -1,6 +1,15 @@
 #' Survival Distributions with piece-wise Constant Hazards and multiple states (function factories)
 #'
 #' @describeIn multistate_functions density of survival distributions with piece-wise constant hazards and multiple states
+#'
+#' @description
+#' Densitiy, distribution function, hazard function, cumulative hazard function
+#' and survival function of multi-state survival functions.
+#'
+#' Those functions return functions of one parameter that can be evaluated to
+#' give the density, distribution function, ... The parameters `t`, `Q`, `pi`
+#' and `abs` are checked only once and not at every function evaluation.
+#'
 #' @seealso [mstate]
 #'
 #' @param t vector of left interval borders
