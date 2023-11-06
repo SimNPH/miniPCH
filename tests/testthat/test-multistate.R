@@ -1,4 +1,4 @@
-test_that("mstate: distribution functions, classic interface are consistent", {
+test_that("multi-state: distribution functions, classic interface are consistent", {
   Tint <- c(1,20)
   Q <- array(NA_real_, dim=c(3,3,2))
   Q[,,1] <- matrix(
@@ -38,7 +38,7 @@ test_that("mstate: distribution functions, classic interface are consistent", {
   )
 })
 
-test_that("mstate: test functions for case of exponential distribution", {
+test_that("multi-state: test functions for case of exponential distribution", {
   Tint <- c(0, 20)
   Q_ <- matrix(
     c(

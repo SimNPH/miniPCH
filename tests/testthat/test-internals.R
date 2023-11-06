@@ -6,7 +6,7 @@ test_that("parameter assertions work nph", {
   expect_no_error(check_t_lambda(c(0,1,2), c(1,2,1)))
 })
 
-test_that("parameter assertions work mstate", {
+test_that("parameter assertions work multi-state", {
   Q <- array(0, dim=c(2,2,2))
   Tint <- c(0,1)
   abs <- c(0,1)
