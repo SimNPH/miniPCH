@@ -52,7 +52,7 @@ spch(q, t, lambda)
 
 \code{chpch} gives the cumulative hazard function evaluated at \code{x}.
 
-\code{dpch} gives the survival function evaluated at \code{q}.
+\code{spch} gives the survival function evaluated at \code{q}.
 }
 \description{
 Densitiy, distribution function, quantiles, random numbers, hazard function,

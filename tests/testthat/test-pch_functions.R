@@ -1,4 +1,4 @@
-test_that("distribution functions, classic interface are consistent", {
+test_that("distribution functions are consistent", {
   times <- c(0, 1)
   hazards <- c(1, 0.5)
   x <- seq(0, 5, by=0.5)

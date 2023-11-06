@@ -2,6 +2,7 @@
 // Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 #include "../inst/include/miniPCH.h"
+#include <RcppArmadillo.h>
 #include <Rcpp.h>
 #include <string>
 #include <set>
@@ -13,6 +14,81 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// cdfFunCpp_multistate
+NumericVector cdfFunCpp_multistate(const NumericVector& Tint, const arma::cube& Q, const arma::vec& pi, const arma::vec& abs, const NumericVector& v);
+RcppExport SEXP _miniPCH_cdfFunCpp_multistate(SEXP TintSEXP, SEXP QSEXP, SEXP piSEXP, SEXP absSEXP, SEXP vSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const NumericVector& >::type Tint(TintSEXP);
+    Rcpp::traits::input_parameter< const arma::cube& >::type Q(QSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type pi(piSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type abs(absSEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type v(vSEXP);
+    rcpp_result_gen = Rcpp::wrap(cdfFunCpp_multistate(Tint, Q, pi, abs, v));
+    return rcpp_result_gen;
+END_RCPP
+}
+// survFunCpp_multistate
+NumericVector survFunCpp_multistate(const NumericVector& Tint, const arma::cube& Q, const arma::vec& pi, const arma::vec& abs, const NumericVector& v);
+RcppExport SEXP _miniPCH_survFunCpp_multistate(SEXP TintSEXP, SEXP QSEXP, SEXP piSEXP, SEXP absSEXP, SEXP vSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const NumericVector& >::type Tint(TintSEXP);
+    Rcpp::traits::input_parameter< const arma::cube& >::type Q(QSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type pi(piSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type abs(absSEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type v(vSEXP);
+    rcpp_result_gen = Rcpp::wrap(survFunCpp_multistate(Tint, Q, pi, abs, v));
+    return rcpp_result_gen;
+END_RCPP
+}
+// hazFunCpp_multistate
+NumericVector hazFunCpp_multistate(const NumericVector& Tint, const arma::cube& Q, const arma::vec& pi, const arma::vec& abs, const NumericVector& v);
+RcppExport SEXP _miniPCH_hazFunCpp_multistate(SEXP TintSEXP, SEXP QSEXP, SEXP piSEXP, SEXP absSEXP, SEXP vSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const NumericVector& >::type Tint(TintSEXP);
+    Rcpp::traits::input_parameter< const arma::cube& >::type Q(QSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type pi(piSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type abs(absSEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type v(vSEXP);
+    rcpp_result_gen = Rcpp::wrap(hazFunCpp_multistate(Tint, Q, pi, abs, v));
+    return rcpp_result_gen;
+END_RCPP
+}
+// cumhazFunCpp_multistate
+NumericVector cumhazFunCpp_multistate(const NumericVector& Tint, const arma::cube& Q, const arma::vec& pi, const arma::vec& abs, const NumericVector& v);
+RcppExport SEXP _miniPCH_cumhazFunCpp_multistate(SEXP TintSEXP, SEXP QSEXP, SEXP piSEXP, SEXP absSEXP, SEXP vSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const NumericVector& >::type Tint(TintSEXP);
+    Rcpp::traits::input_parameter< const arma::cube& >::type Q(QSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type pi(piSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type abs(absSEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type v(vSEXP);
+    rcpp_result_gen = Rcpp::wrap(cumhazFunCpp_multistate(Tint, Q, pi, abs, v));
+    return rcpp_result_gen;
+END_RCPP
+}
+// pdfFunCpp_multistate
+NumericVector pdfFunCpp_multistate(const NumericVector& Tint, const arma::cube& Q, const arma::vec& pi, const arma::vec& abs, const NumericVector& v);
+RcppExport SEXP _miniPCH_pdfFunCpp_multistate(SEXP TintSEXP, SEXP QSEXP, SEXP piSEXP, SEXP absSEXP, SEXP vSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const NumericVector& >::type Tint(TintSEXP);
+    Rcpp::traits::input_parameter< const arma::cube& >::type Q(QSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type pi(piSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type abs(absSEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type v(vSEXP);
+    rcpp_result_gen = Rcpp::wrap(pdfFunCpp_multistate(Tint, Q, pi, abs, v));
+    return rcpp_result_gen;
+END_RCPP
+}
 // hazFunCpp
 NumericVector hazFunCpp(const NumericVector& Tint, const NumericVector& lambda, const NumericVector& v);
 static SEXP _miniPCH_hazFunCpp_try(SEXP TintSEXP, SEXP lambdaSEXP, SEXP vSEXP) {
@@ -257,6 +333,11 @@ RcppExport SEXP _miniPCH_RcppExport_registerCCallable() {
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_miniPCH_cdfFunCpp_multistate", (DL_FUNC) &_miniPCH_cdfFunCpp_multistate, 5},
+    {"_miniPCH_survFunCpp_multistate", (DL_FUNC) &_miniPCH_survFunCpp_multistate, 5},
+    {"_miniPCH_hazFunCpp_multistate", (DL_FUNC) &_miniPCH_hazFunCpp_multistate, 5},
+    {"_miniPCH_cumhazFunCpp_multistate", (DL_FUNC) &_miniPCH_cumhazFunCpp_multistate, 5},
+    {"_miniPCH_pdfFunCpp_multistate", (DL_FUNC) &_miniPCH_pdfFunCpp_multistate, 5},
     {"_miniPCH_hazFunCpp", (DL_FUNC) &_miniPCH_hazFunCpp, 3},
     {"_miniPCH_cumhazFunCpp", (DL_FUNC) &_miniPCH_cumhazFunCpp, 3},
     {"_miniPCH_cdfFunCpp", (DL_FUNC) &_miniPCH_cdfFunCpp, 3},
