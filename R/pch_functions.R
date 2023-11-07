@@ -30,9 +30,6 @@ dpch_fun <- function(t, lambda){
 
 #' @describeIn pch_functions distribution function of survival distributions with piece-wise constant hazards
 #'
-#' @param t vector of left interval borders
-#' @param lambda vector of hazards
-#'
 #' @return `ppch_fun` gives the distribution function
 #' @export
 #'
@@ -47,9 +44,6 @@ ppch_fun <- function(t, lambda){
 }
 
 #' @describeIn pch_functions quantile function of survival distributions with piece-wise constant hazards
-#'
-#' @param t vector of left interval borders
-#' @param lambda vector of hazards
 #'
 #' @return `qpch_fun` gives the quantile function.
 #' @export
@@ -67,8 +61,6 @@ qpch_fun <- function(t, lambda){
 
 #' @describeIn pch_functions RNG function of survival distributions with piece-wise constant hazards
 #'
-#' @param t vector of left interval borders
-#' @param lambda vector of hazards
 #' @param discrete round survival times to whole numbers
 #'
 #' @return `rpch_fun` gives a function to sample from the given distribution.
@@ -94,9 +86,6 @@ rpch_fun <- function(t, lambda, discrete=FALSE){
 
 #' @describeIn pch_functions hazard function of survival distributions with piece-wise constant hazards
 #'
-#' @param t vector of left interval borders
-#' @param lambda vector of hazards
-#'
 #' @return `hpch_fun` gives the hazard function.
 #' @export
 #'
@@ -112,9 +101,6 @@ hpch_fun <- function(t, lambda){
 
 #' @describeIn pch_functions cumulative hazard function of survival distributions with piece-wise constant hazards
 #'
-#' @param t vector of left interval borders
-#' @param lambda vector of hazards
-#'
 #' @return `chpch_fun` gives the cumulative hazard function.
 #' @export
 #'
@@ -129,9 +115,6 @@ chpch_fun <- function(t, lambda){
 }
 
 #' @describeIn pch_functions survival function of survival distributions with piece-wise constant hazards
-#'
-#' @param t vector of left interval borders
-#' @param lambda vector of hazards
 #'
 #' @return `spch_fun` gives the survival function.
 #' @export
@@ -152,7 +135,7 @@ spch_fun <- function(t, lambda){
 #' @param lambda vector of hazards
 #' @param discrete round survival times to whole numbers in RNG
 #'
-#' @return an object of class "miniPCH"
+#' @return `pch_functions` gives an object of class "miniPCH"
 #' @export
 #'
 #' @examples
@@ -173,6 +156,6 @@ pch_functions <- function(t, lambda, discrete=FALSE){
     lambda = lambda,
     discrete = discrete
   )
-  class(res) <- "miniPCH"
+  class(res) <- c("miniPCH")
   res
 }

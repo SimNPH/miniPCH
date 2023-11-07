@@ -1,11 +1,11 @@
 Package: miniPCH
 Type: Package
 Title: Survival Distributions with Piece-Wise Constant Hazards
-Version: 0.2.0
+Version: 0.3.0
 Authors@R: c(person("Tobias", "Fellinger", email="tobias.fellinger@ages.at", role=c("aut", "cre"), comment = c(ORCID = "0000-0001-9474-2731")),
             person("Florian", "Klinglmueller", role=c("aut"), comment = c(ORCID = "0000-0002-7346-3669")))
 License: GPL (>= 3)
-Description: Density, distribution function, ... hazard function, cumulative hazard function, survival function for survival distributions with piece-wise constant hazards.
+Description: Density, distribution function, ... hazard function, cumulative hazard function, survival function for survival distributions with piece-wise constant hazards and multiple states.
 Encoding: UTF-8
 Imports:
     Rcpp (>= 1.0.8),
@@ -13,7 +13,8 @@ Imports:
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 LinkingTo: 
-    Rcpp
+    Rcpp,
+    RcppArmadillo
 Suggests: 
     testthat (>= 3.0.0),
     covr,

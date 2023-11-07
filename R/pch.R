@@ -24,8 +24,6 @@ dpch <- function(x, t, lambda){
 #' @describeIn pch distribution function of survival distributions with piece-wise constant hazards
 #'
 #' @param q vector of quantiles
-#' @param t vector of left interval borders
-#' @param lambda vector of hazards
 #'
 #' @return `ppch` gives the distribution function evaluated at `q`.
 #' @export
@@ -40,8 +38,6 @@ ppch <- function(q, t, lambda){
 #' @describeIn pch quantiles of survival distributions with piece-wise constant hazards
 #'
 #' @param p vector of probabilities
-#' @param t vector of left interval borders
-#' @param lambda vector of hazards
 #'
 #' @return `qpch` gives the `p`-quantiles.
 #' @export
@@ -57,8 +53,6 @@ qpch <- function(p, t, lambda){
 #' @describeIn pch random samples of survival distributions with piece-wise constant hazards
 #'
 #' @param n number of random numbers
-#' @param t vector of left interval borders
-#' @param lambda vector of hazards
 #' @param discrete round survival times to whole numbers
 #'
 #' @return `rpch` gives `n` random numbers.
@@ -77,10 +71,6 @@ rpch <- function(n, t, lambda, discrete=FALSE){
 }
 #' @describeIn pch hazard of survival distributions with piece-wise constant hazards
 #'
-#' @param x vector of quantiles
-#' @param t vector of left interval borders
-#' @param lambda vector of hazards
-#'
 #' @return `hpch` gives the hazard function evaluated at `x`.
 #' @export
 #'
@@ -92,10 +82,6 @@ hpch <- function(x, t, lambda){
 }
 
 #' @describeIn pch cumulative hazard of survival distributions with piece-wise constant hazards
-#'
-#' @param x vector of quantiles
-#' @param t vector of left interval borders
-#' @param lambda vector of hazards
 #'
 #' @return `chpch` gives the cumulative hazard function evaluated at `x`.
 #' @export
@@ -109,11 +95,7 @@ chpch <- function(x, t, lambda){
 
 #' @describeIn pch survival function of survival distributions with piece-wise constant hazards
 #'
-#' @param q vector of quantiles
-#' @param t vector of left interval borders
-#' @param lambda vector of hazards
-#'
-#' @return `dpch` gives the survival function evaluated at `q`.
+#' @return `spch` gives the survival function evaluated at `q`.
 #' @export
 #'
 #' @examples
