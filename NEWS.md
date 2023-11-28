@@ -1,3 +1,7 @@
+# miniPCH 0.3.1
+
+* Fixed compile time warning on some plattforms.
+
 # miniPCH 0.3.0
 
 * Added multi-state models
