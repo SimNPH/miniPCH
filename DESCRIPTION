@@ -1,7 +1,7 @@
 Package: miniPCH
 Type: Package
 Title: Survival Distributions with Piece-Wise Constant Hazards
-Version: 0.3.0
+Version: 0.3.1
 Authors@R: c(person("Tobias", "Fellinger", email="tobias.fellinger@ages.at", role=c("aut", "cre"), comment = c(ORCID = "0000-0001-9474-2731")),
             person("Florian", "Klinglmueller", role=c("aut"), comment = c(ORCID = "0000-0002-7346-3669")))
 License: GPL (>= 3)
