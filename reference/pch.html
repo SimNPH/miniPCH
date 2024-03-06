@@ -14,7 +14,7 @@ with piece-wise constant hazards (picewise exponential distributions)."><!-- mat
     
     <a class="navbar-brand me-2" href="../index.html">miniPCH</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -150,11 +150,11 @@ with piece-wise constant hazards (picewise exponential distributions).</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.00000000 0.05268026 0.11157178 0.17833747 0.25541281 0.34657359</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.45814537 0.60198640 0.80471896 1.15129255        Inf</span>
 <span class="r-in"><span><span class="fu">rpch</span><span class="op">(</span><span class="fl">15</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.02827283 0.10484576 0.38405063 0.29932089 0.16508830 0.36603145</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.07807849 2.13054882 0.06716368 0.08649043 0.66044450 0.23667254</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] 1.56827368 0.03090765 2.77443208</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.042098654 0.898887877 0.459097379 0.085517807 0.003713476 0.314048299</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.344355904 0.171081269 0.660032361 0.740349800 1.038125960 0.096149964</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] 0.017420651 0.193114946 0.257356785</span>
 <span class="r-in"><span><span class="fu">rpch</span><span class="op">(</span><span class="fl">15</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">0.1</span><span class="op">)</span>, discrete<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 1 1 1 1 2 1 1 1 1 2 1 1 1 1 1</span>
 <span class="r-in"><span><span class="fu">hpch</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 2.0 2.0 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1</span>
 <span class="r-in"><span><span class="fu">chpch</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span></span></span>
