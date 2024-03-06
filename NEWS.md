@@ -1,6 +1,10 @@
+# miniPCH 0.3.2
+
+* Fixed bug in the calculation of density and hazard in multistate functions
+
 # miniPCH 0.3.1
 
-* Fixed compile time warning on some plattforms.
+* Fixed compile time warning on some plattforms
 
 # miniPCH 0.3.0
 

@@ -54,11 +54,14 @@ NumericVector hazFunCpp_multistate(const NumericVector& Tint, const arma::cube& 
   for(i=0; i < n; i++){
     P = arma::eye(Q.n_rows, Q.n_cols);
     for(j=1; j < m; j++){
+      if(v[i] < Tint[j]){
+        break;
+      }
       P = P * arma::expmat(std::max(std::min(Tint[j], v[i]) - Tint[j-1], 0.) * Q.slice(j-1));
     }
-    P = P * arma::expmat(std::max(v[i] - Tint[m-1], 0.) * Q.slice(m-1));
+    P = P * arma::expmat((v[i] - Tint[j-1]) * Q.slice(j-1));
     surv = 1. - (pi.t() * P * abs).eval()(0,0);
-    pdf = (pi.t() * P * Q.slice(m-1) * abs).eval()(0,0);
+    pdf = (pi.t() * P * Q.slice(j-1) * abs).eval()(0,0);
     result[i] = pdf/surv;
   }
 
@@ -96,10 +99,13 @@ NumericVector pdfFunCpp_multistate(const NumericVector& Tint, const arma::cube& 
   for(i=0; i < n; i++){
     P = arma::eye(Q.n_rows, Q.n_cols);
     for(j=1; j < m; j++){
+      if(v[i] < Tint[j]){
+        break;
+      }
       P = P * arma::expmat(std::max(std::min(Tint[j], v[i]) - Tint[j-1], 0.) * Q.slice(j-1));
     }
-    P = P * arma::expmat(std::max(v[i] - Tint[m-1], 0.) * Q.slice(m-1));
-    result[i] = (pi.t() * P * Q.slice(m-1) * abs).eval()(0,0);
+    P = P * arma::expmat((v[i] - Tint[j-1]) * Q.slice(j-1));
+    result[i] = (pi.t() * P * Q.slice(j-1) * abs).eval()(0,0);
   }
 
   return result;
