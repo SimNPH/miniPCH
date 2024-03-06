@@ -93,3 +93,41 @@ test_that("multi-state: test functions for case of exponential distribution", {
   )
 
 })
+
+
+test_that("Functions and manual calculation are consistent", {
+  Q1 <- matrix(c(
+    -1,  0.5, 0.5, 0,
+    1, -2, 1, 0,
+    1,  1, -3, 1,
+    0,  0, 0, 0
+  ), 4,4, byrow = TRUE)
+
+  Q2 <- matrix(c(
+    -1,  0.5, 0.5, 0,
+    2, -2, 0, 0,
+    1,  1, -3, 1,
+    0,  0, 0, 0
+  ), 4,4, byrow = TRUE) * 3
+
+  Q <- array(c(Q1, Q2), dim=c(4,4,2))
+  t <- c(0,5)
+
+  test <- multistate_functions(
+    t = t,
+    Q = Q,
+    pi = c(1,0,0,0),
+    abs = c(0L, 0L, 0L, 1L)
+  )
+
+  x <- seq(0, 15, by=0.1)
+
+  test$d(x)
+  p1 <- test$p(x)
+  p2 <- sapply(x, \(xx){integrate(test$d, 0, xx)$value})
+  expect_lt(max(abs(p1-p2)), 1e-4)
+
+  h1 <- test$h(x)
+  h2 <- test$d(x)/test$s(x)
+  expect_lt(max(abs(h1-h2)), 2* .Machine$double.eps)
+})
