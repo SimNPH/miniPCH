@@ -22,3 +22,10 @@ Summary for miniPCH objects:
 All:
 
 * Register Methods with UseMethod, roxygen2 and Description
+
+Tests:
+
+* 100% test coverage before merge into master
+* how to test plots -> minimum, no errors
+* compare ggplot object
+* test text output of summary
