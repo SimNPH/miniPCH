@@ -1,0 +1,24 @@
+Plotting for miniPCH objects:
+
+* use base::curve and the functions from the object
+* select functions to plot, use reasonable default (survival, hazard, density)
+* choose x-limit (heuristic depending on the time intervals or quantiles)
+* pass ... on to curve
+* additional function (not plot method) to plot states and transitions for mutlistate models
+* use par.mfrow to arrange plots
+
+Use ggplot2 autoplot if ggplot is available:
+
+* need to check if ggplot2 is available or the s3 generic just not available if ggplot2 is not available?
+* arrange with facets or other method of arranging?
+
+Summary for miniPCH objects:
+
+* report time intervals
+* report hazard rates
+* how to report transition / generator matrix?
+* report summary statistics like mean and average survival times?
+
+All:
+
+* Register Methods with UseMethod, roxygen2 and Description
