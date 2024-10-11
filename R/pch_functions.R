@@ -139,7 +139,7 @@ spch_fun <- function(t, lambda){
 #' @export
 #'
 #' @examples
-#' my_pch <- pch_functions(c(0, 3), c(2, 0.1))#
+#' my_pch <- pch_functions(c(0, 3), c(2, 0.1))
 #' my_pch$t
 #' my_pch$r(15)
 #' my_pch$ch(1:10)
