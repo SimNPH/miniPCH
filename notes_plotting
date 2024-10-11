@@ -1,11 +1,6 @@
 Plotting for miniPCH objects:
 
-* use base::curve and the functions from the object
-* select functions to plot, use reasonable default (survival, hazard, density)
-* choose x-limit (heuristic depending on the time intervals or quantiles)
-* pass ... on to curve
 * additional function (not plot method) to plot states and transitions for mutlistate models
-* use par.mfrow to arrange plots
 
 Use ggplot2 autoplot if ggplot is available:
 
@@ -26,6 +21,10 @@ All:
 Tests:
 
 * 100% test coverage before merge into master
-* how to test plots -> minimum, no errors
-* compare ggplot object
 * test text output of summary
+* how to test plots:
+  * test plots for pch and multistate objects
+  * vdiffr for base plot and ggplot autoplot
+  * inspect layers, etc. for ggplot object
+  * check if printing works
+    * is printing automatically done if vdiffr snapshot is made?
