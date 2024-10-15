@@ -8,10 +8,11 @@
 #' @param n number of points for interpolation
 #' @param ... passed on to base::plot
 #'
-#' @details
-#'
 #' @export
 #'
+#' @rdname miniPCH.class
+#'
+#' @details
 #' The layout uses the mfrow argument to par and defaults to all plots in one
 #' row. The layout can be overwritten by passing the mfrow argument, that is
 #' passed as is to an internal call to par.
@@ -81,7 +82,13 @@ plot.miniPCH <- function(obj, what=c("d", "s", "h"), from, to, mfrow=c(1,length(
   invisible(NULL)
 }
 
-
+# internal function to plot right-continuous functions with limits from the left
+# (cadlag) functions used in plot.miniPCH
+#
+# Arguments:
+#   * x: points on x-Axis where to evaluate the function
+#   * fun: the function
+#   * jumps: a vector of jump-discontinuity points of fun
 plot_cadlag <- function(x, fun, jumps, ...){
   jumps <- c(jumps, Inf) |>
     sort() |>
@@ -98,4 +105,51 @@ plot_cadlag <- function(x, fun, jumps, ...){
   }, 1:(length(jumps)-1))
 
   invisible(NULL)
+}
+
+#' Title
+#'
+#' @param obj
+#'
+#' @return
+#' @export
+#'
+#' @describeIn miniPCH.class summary
+#'
+#' @examples
+summary.miniPCH <- function(obj){
+
+}
+
+#' Title
+#'
+#' @param obj
+#'
+#' @return
+#' @export
+#'
+#' @describeIn miniPCH.class printing
+#'
+#' @examples
+print.miniPCH <- function(obj){
+
+}
+
+#' Title
+#'
+#' @param obj
+#' @param what
+#' @param from
+#' @param to
+#' @param n
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @describeIn miniPCH.class autoplot with ggplot
+#'
+#' @examples
+autoplot.miniPCH <- function(obj, what=c("d", "s", "h"), from, to, n=1001, ...){
+
 }

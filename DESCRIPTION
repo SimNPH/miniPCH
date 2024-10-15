@@ -11,7 +11,7 @@ Imports:
     Rcpp (>= 1.0.8),
     checkmate
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 LinkingTo: 
     Rcpp,
     RcppArmadillo
