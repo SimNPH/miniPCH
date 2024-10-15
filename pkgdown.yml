@@ -1,9 +1,8 @@
 pandoc: 3.1.11
-pkgdown: 2.0.9
+pkgdown: 2.1.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2024-06-18T13:10Z
+last_built: 2024-10-15T09:23Z
 urls:
   reference: https://simnph.github.io/miniPCH/reference
   article: https://simnph.github.io/miniPCH/articles
-
