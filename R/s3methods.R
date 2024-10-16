@@ -151,5 +151,67 @@ print.miniPCH <- function(obj){
 #'
 #' @examples
 autoplot.miniPCH <- function(obj, what=c("d", "s", "h"), from, to, n=1001, ...){
+  if (!requireNamespace("ggplot2", quietly = TRUE))
+    stop("Missing package 'ggplot2'.")
 
+  if(!all(what %in% c("d", "p", "q", "h", "ch", "s"))){
+    stop(gettext("Argument what has to be a character vector containing only d, p, q, h, ch, s, to plot density, cdf, quantiles, hazard, cumulative hazard or survival function"))
+  }
+  if(("q" %in% what) & (!("q" %in% names(obj)))){
+    stop(gettext("Plotting quantiles is not supported for this object."))
+  }
+
+  # heuristic to set plot interval
+  # start at lowest time interval
+  if(missing(from)){
+    from <- min(obj$t)
+  }
+  # plot to 90% percentile or 1.5 times the range of given time points,
+  # whichever is later
+  if(missing(to)){
+    if("q" %in% names(obj)){
+      q <- obj$q(0.9)
+    } else {
+      q <- uniroot(\(t){obj$s(t)-0.1}, lower=0, upper=1, extendInt = "downX")$root
+    }
+    t_max <- max(obj$t) + 0.5*(max(obj$t)-min(obj$t))
+    to <- max(q, t_max)
+  }
+
+  x <- seq(from, to, length.out=n)
+  plotdata <- Map(
+    \(i, name){
+      if(i %in% c("d", "h")){
+        # TODO: create data cadlag
+        data.frame(
+         x=x,
+         y=obj[[i]](x),
+         left=NA_real_,
+         right=NA_real_,
+         facet=name
+        )
+      } else {
+        data.frame(
+          x=x,
+          y=obj[[i]](x),
+          left=NA_real_,
+          right=NA_real_,
+          facet=name
+        )
+      }
+    },
+    what, make.unique(what)
+  ) |>
+    do.call(rbind, args=_)
+
+  gg <- ggplot::ggplot(plotdata, aes(x=x, y=y)) +
+    ggplot::geom_line() +
+    ggplot::facet_wrap(~facet, scales="free_y") +
+    ggplot::geom_vline(xintercept = obj[["t"]], lty=2) +
+    ggplot::labs(
+      x="t",
+      y=character(0)
+    )
+
+  gg
 }

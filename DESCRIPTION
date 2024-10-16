@@ -19,7 +19,8 @@ Suggests:
     testthat (>= 3.0.0),
     covr,
     withr,
-    vdiffr
+    vdiffr,
+    ggplot2
 Config/testthat/edition: 3
 URL: https://simnph.github.io/miniPCH/, https://github.com/SimNPH/miniPCH
 BugReports: https://github.com/SimNPH/miniPCH/issues/
