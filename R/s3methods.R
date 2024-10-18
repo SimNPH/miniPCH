@@ -196,21 +196,12 @@ autoplot.miniPCH <- function(obj, what=c("d", "s", "h"), from, to, n=1001){
         # data for jumps
         data_jumps <- Map(\(j){
           x_i <- obj$t[j]
-          if(i == 1){
-            data.frame(
-              x = x_i,
-              y = obj[[i]](x_i),
-              jump = factor(c("r"), levels=c("l","r")),
-              facet = name
-            )
-          } else{
-            data.frame(
-              x = rep(x_i, 3),
-              y = c(obj[[i]](x_i-tmp_eps), NA_real_, obj[[i]](x_i)),
-              jump = factor(c("r", NA, "l"), levels=c("l","r")),
-              facet = name
-            )
-          }
+          data.frame(
+            x = rep(x_i, 3),
+            y = c(obj[[i]](x_i-tmp_eps), NA_real_, obj[[i]](x_i)),
+            jump = factor(c("r", NA, "l"), levels=c("l","r")),
+            facet = name
+          )
         }, 1:length(obj$t)) |>
           do.call(rbind, args=_)
 

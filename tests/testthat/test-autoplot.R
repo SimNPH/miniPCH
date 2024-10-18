@@ -28,7 +28,7 @@ test_that("autoplot method outputs the correct images", {
 
   with_mocked_bindings(
     {
-      expect_error(autoplot(gg2))
+      expect_error(ggplot2::autoplot(my_obj))
     },
     requireNamespace = function(package, ..., quietly=FALSE) FALSE,
     .package="base"
