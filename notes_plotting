@@ -1,30 +1,13 @@
-Plotting for miniPCH objects:
-
-* additional function (not plot method) to plot states and transitions for mutlistate models
-
-Use ggplot2 autoplot if ggplot is available:
-
-* need to check if ggplot2 is available or the s3 generic just not available if ggplot2 is not available?
-* arrange with facets or other method of arranging?
-
 Summary for miniPCH objects:
 
 * report time intervals
 * report hazard rates
 * how to report transition / generator matrix?
+  * just report number of states / initial states / absorbing states
 * report summary statistics like mean and average survival times?
-
-All:
-
-* Register Methods with UseMethod, roxygen2 and Description
+  * no (for now)
 
 Tests:
 
 * 100% test coverage before merge into master
 * test text output of summary
-* how to test plots:
-  * test plots for pch and multistate objects
-  * vdiffr for base plot and ggplot autoplot
-  * inspect layers, etc. for ggplot object
-  * check if printing works
-    * is printing automatically done if vdiffr snapshot is made?
