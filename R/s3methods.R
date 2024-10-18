@@ -23,6 +23,7 @@
 #' @examples
 #' my_pch <- pch_functions(c(0, 3), c(2, 0.1))
 #' plot(my_pch)
+#' autoplot(my_pch)
 #'
 #' Tint <- c(0,3)
 #' Q <- array(
@@ -42,6 +43,7 @@
 #'
 #' my_obj <- multistate_functions(Tint, Q, pi, abs)
 #' plot(my_obj)
+#' autoplot(my_obj)
 plot.miniPCH <- function(obj, what=c("d", "s", "h"), from, to, mfrow=c(1,length(what)), n=1001, ...){
   if(!all(what %in% c("d", "p", "q", "h", "ch", "s"))){
     stop(gettext("Argument what has to be a character vector containing only d, p, q, h, ch, s, to plot density, cdf, quantiles, hazard, cumulative hazard or survival function"))
@@ -90,6 +92,9 @@ plot.miniPCH <- function(obj, what=c("d", "s", "h"), from, to, mfrow=c(1,length(
 #   * fun: the function
 #   * jumps: a vector of jump-discontinuity points of fun
 plot_cadlag <- function(x, fun, jumps, ...){
+  # eps for comparison of smallest double step left of jump point
+  tmp_eps <- ceiling(log2(max(c(abs(jumps), 2))))*.Machine$double.eps
+
   jumps <- c(jumps, Inf) |>
     sort() |>
     unique()
@@ -100,7 +105,7 @@ plot_cadlag <- function(x, fun, jumps, ...){
     lines(tmp_x, fun(tmp_x))
     points(jumps[i], fun(jumps[i]), pch=18)
     if(i != 1L){
-      points(jumps[i], fun(jumps[i]-2*.Machine$double.eps), pch=1)
+      points(jumps[i], fun(jumps[i]-tmp_eps), pch=1)
     }
   }, 1:(length(jumps)-1))
 
@@ -135,24 +140,16 @@ print.miniPCH <- function(obj){
 
 }
 
-#' Title
-#'
-#' @param obj
-#' @param what
-#' @param from
-#' @param to
-#' @param n
-#' @param ...
-#'
 #' @return
-#' @export
+#' a ggplot object
+#'
+#' @exportS3Method ggplot2::autoplot
 #'
 #' @describeIn miniPCH.class autoplot with ggplot
-#'
-#' @examples
-autoplot.miniPCH <- function(obj, what=c("d", "s", "h"), from, to, n=1001, ...){
-  if (!requireNamespace("ggplot2", quietly = TRUE))
+autoplot.miniPCH <- function(obj, what=c("d", "s", "h"), from, to, n=1001){
+  if (!requireNamespace("ggplot2", quietly = TRUE)){
     stop("Missing package 'ggplot2'.")
+  }
 
   if(!all(what %in% c("d", "p", "q", "h", "ch", "s"))){
     stop(gettext("Argument what has to be a character vector containing only d, p, q, h, ch, s, to plot density, cdf, quantiles, hazard, cumulative hazard or survival function"))
@@ -179,6 +176,10 @@ autoplot.miniPCH <- function(obj, what=c("d", "s", "h"), from, to, n=1001, ...){
   }
 
   x <- seq(from, to, length.out=n)
+
+  # eps for comparison of smallest double step left of jump point
+  tmp_eps <- ceiling(log2(max(c(abs(obj$t), 2))))*.Machine$double.eps
+
   plotdata <- Map(
     \(i, name){
       if(i %in% c("d", "h")){
@@ -193,14 +194,24 @@ autoplot.miniPCH <- function(obj, what=c("d", "s", "h"), from, to, n=1001, ...){
         )
 
         # data for jumps
-        data_jumps <- Map(\(x_i){
-          data.frame(
-            x = rep(x_i, 3),
-            y = c(obj[[i]](x_i-2*.Machine$double.eps), NA_real_, obj[[i]](x_i)),
-            jump = factor(c("r", NA, "l"), levels=c("l","r")),
-            facet = name
-          )
-        }, obj$t) |>
+        data_jumps <- Map(\(j){
+          x_i <- obj$t[j]
+          if(i == 1){
+            data.frame(
+              x = x_i,
+              y = obj[[i]](x_i),
+              jump = factor(c("r"), levels=c("l","r")),
+              facet = name
+            )
+          } else{
+            data.frame(
+              x = rep(x_i, 3),
+              y = c(obj[[i]](x_i-tmp_eps), NA_real_, obj[[i]](x_i)),
+              jump = factor(c("r", NA, "l"), levels=c("l","r")),
+              facet = name
+            )
+          }
+        }, 1:length(obj$t)) |>
           do.call(rbind, args=_)
 
         # first value only has a left limit
@@ -222,9 +233,9 @@ autoplot.miniPCH <- function(obj, what=c("d", "s", "h"), from, to, n=1001, ...){
   ) |>
     do.call(rbind, args=_)
 
-  gg <- ggplot2::ggplot(plotdata, aes(x=x, y=y)) +
+  gg <- ggplot2::ggplot(plotdata, ggplot2::aes(x=x, y=y)) +
     ggplot2::geom_line(na.rm=TRUE) +
-    ggplot2::geom_point(aes(shape=jump), na.rm=TRUE) +
+    ggplot2::geom_point(ggplot2::aes(shape=jump), na.rm=TRUE) +
     ggplot2::scale_shape_manual(values=c(l=16, r=1), guide="none") +
     ggplot2::facet_wrap(~facet, scales="free_y") +
     ggplot2::geom_vline(xintercept = obj[["t"]], lty=2) +

@@ -2,6 +2,9 @@
 % Please edit documentation in R/s3methods.R
 \name{plot.miniPCH}
 \alias{plot.miniPCH}
+\alias{summary.miniPCH}
+\alias{print.miniPCH}
+\alias{autoplot.miniPCH}
 \title{miniPCH class}
 \usage{
 \method{plot}{miniPCH}(
@@ -13,9 +16,15 @@
   n = 1001,
   ...
 )
+
+\method{summary}{miniPCH}(obj)
+
+\method{print}{miniPCH}(obj)
+
+\method{autoplot}{miniPCH}(obj, what = c("d", "s", "h"), from, to, n = 1001)
 }
 \arguments{
-\item{obj}{miniPCH object}
+\item{obj}{}
 
 \item{what}{what to plot ("d", "p", "q", "h", "ch", "s")}
 
@@ -31,18 +40,34 @@
 }
 \value{
 NULL, invisibly
+
+a ggplot object
 }
 \description{
 miniPCH class
+
+Title
+
+Title
 }
 \details{
 The layout uses the mfrow argument to par and defaults to all plots in one
 row. The layout can be overwritten by passing the mfrow argument, that is
 passed as is to an internal call to par.
 }
+\section{Functions}{
+\itemize{
+\item \code{summary(miniPCH)}: summary
+
+\item \code{print(miniPCH)}: printing
+
+\item \code{autoplot(miniPCH)}: autoplot with ggplot
+
+}}
 \examples{
 my_pch <- pch_functions(c(0, 3), c(2, 0.1))
 plot(my_pch)
+autoplot(my_pch)
 
 Tint <- c(0,3)
 Q <- array(
@@ -62,4 +87,5 @@ abs <- c(0,0,1)
 
 my_obj <- multistate_functions(Tint, Q, pi, abs)
 plot(my_obj)
+autoplot(my_obj)
 }

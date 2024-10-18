@@ -19,15 +19,15 @@ test_that("plot method outputs the correct images", {
   my_obj2 <- pch_functions(t=c(0, 5), lambda=c(0.1, 0.2))
 
   example_plot <- function(){
-    plot.miniPCH(my_obj)
+    plot(my_obj)
   }
 
   example_plot2 <- function(){
-    plot.miniPCH(my_obj2)
+    plot(my_obj2)
   }
 
   vdiffr::expect_doppelganger("multistate-plot", example_plot)
-  expect_error(plot.miniPCH(my_obj, what=c("q")))
+  expect_error(plot(my_obj, what=c("q")))
   vdiffr::expect_doppelganger("pch-plot", example_plot2)
-  expect_error(plot.miniPCH(my_obj2, what=c("x")))
+  expect_error(plot(my_obj2, what=c("x")))
 })
