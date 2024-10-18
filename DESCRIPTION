@@ -5,7 +5,12 @@ Version: 0.3.2
 Authors@R: c(person("Tobias", "Fellinger", email="tobias.fellinger@ages.at", role=c("aut", "cre"), comment = c(ORCID = "0000-0001-9474-2731")),
             person("Florian", "Klinglmueller", role=c("aut"), comment = c(ORCID = "0000-0002-7346-3669")))
 License: GPL (>= 3)
-Description: Density, distribution function, ... hazard function, cumulative hazard function, survival function for survival distributions with piece-wise constant hazards and multiple states.
+Description: Density, distribution function, ... hazard function, cumulative
+    hazard function, survival function for survival distributions with
+    piece-wise constant hazards and multiple states. And methods to plot and
+    summarise those distributions. 
+    A derivation of the used algorithms in included in my masters thesis 
+    <doi:10.25365/thesis.76098>.
 Encoding: UTF-8
 Imports:
     Rcpp (>= 1.0.8),
