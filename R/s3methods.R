@@ -182,20 +182,38 @@ autoplot.miniPCH <- function(obj, what=c("d", "s", "h"), from, to, n=1001, ...){
   plotdata <- Map(
     \(i, name){
       if(i %in% c("d", "h")){
-        # TODO: create data cadlag
-        data.frame(
-         x=x,
-         y=obj[[i]](x),
-         left=NA_real_,
-         right=NA_real_,
+        tmp_x <- setdiff(x, obj$t)
+
+        # data for continuous part
+        data_cont <- data.frame(
+         x=tmp_x,
+         y=obj[[i]](tmp_x),
+         jump=factor(NA, levels=c("l","r")),
          facet=name
         )
+
+        # data for jumps
+        data_jumps <- Map(\(x_i){
+          data.frame(
+            x = rep(x_i, 3),
+            y = c(obj[[i]](x_i-2*.Machine$double.eps), NA_real_, obj[[i]](x_i)),
+            jump = factor(c("r", NA, "l"), levels=c("l","r")),
+            facet = name
+          )
+        }, obj$t) |>
+          do.call(rbind, args=_)
+
+        # first value only has a left limit
+        data_jumps <- data_jumps[-1, ]
+
+        # sort by is stable, so values at jump points are not re-ordered
+        rbind(data_cont, data_jumps) |>
+          sort_by(~x)
       } else {
         data.frame(
           x=x,
           y=obj[[i]](x),
-          left=NA_real_,
-          right=NA_real_,
+          jump=factor(NA, levels=c("l","r")),
           facet=name
         )
       }
@@ -204,11 +222,13 @@ autoplot.miniPCH <- function(obj, what=c("d", "s", "h"), from, to, n=1001, ...){
   ) |>
     do.call(rbind, args=_)
 
-  gg <- ggplot::ggplot(plotdata, aes(x=x, y=y)) +
-    ggplot::geom_line() +
-    ggplot::facet_wrap(~facet, scales="free_y") +
-    ggplot::geom_vline(xintercept = obj[["t"]], lty=2) +
-    ggplot::labs(
+  gg <- ggplot2::ggplot(plotdata, aes(x=x, y=y)) +
+    ggplot2::geom_line(na.rm=TRUE) +
+    ggplot2::geom_point(aes(shape=jump), na.rm=TRUE) +
+    ggplot2::scale_shape_manual(values=c(l=16, r=1), guide="none") +
+    ggplot2::facet_wrap(~facet, scales="free_y") +
+    ggplot2::geom_vline(xintercept = obj[["t"]], lty=2) +
+    ggplot2::labs(
       x="t",
       y=character(0)
     )
