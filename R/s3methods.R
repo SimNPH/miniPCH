@@ -13,12 +13,12 @@
 #' @rdname miniPCH.class
 #'
 #' @details
-#' The layout uses the mfrow argument to par and defaults to all plots in one
-#' row. The layout can be overwritten by passing the mfrow argument, that is
-#' passed as is to an internal call to par.
+#' The layout in print uses the mfrow argument to par and defaults to all plots
+#' in one row. The layout can be overwritten by passing the mfrow argument, that
+#' is passed as is to an internal call to par.
 #'
 #' @return
-#' NULL, invisibly
+#' for plot: NULL, invisibly
 #'
 #' @examples
 #' my_pch <- pch_functions(c(0, 3), c(2, 0.1))
@@ -44,6 +44,8 @@
 #' my_obj <- multistate_functions(Tint, Q, pi, abs)
 #' plot(my_obj)
 #' autoplot(my_obj)
+#' summary(my_obj)
+#' print(my_obj)
 plot.miniPCH <- function(obj, what=c("d", "s", "h"), from, to, mfrow=c(1,length(what)), n=1001, ...){
   if(!all(what %in% c("d", "p", "q", "h", "ch", "s"))){
     stop(gettext("Argument what has to be a character vector containing only d, p, q, h, ch, s, to plot density, cdf, quantiles, hazard, cumulative hazard or survival function"))
@@ -112,36 +114,45 @@ plot_cadlag <- function(x, fun, jumps, ...){
   invisible(NULL)
 }
 
-#' Title
-#'
-#' @param obj
-#'
-#' @return
+#' @return for summary: a list
 #' @export
 #'
 #' @describeIn miniPCH.class summary
 #'
 #' @examples
 summary.miniPCH <- function(obj){
-
+  obj[names(obj) %in% c("t", "lambda", "Q", "pi", "abs", "discrete")]
 }
 
-#' Title
-#'
-#' @param obj
-#'
-#' @return
+#' @return for print: the printed text, invisibly
 #' @export
 #'
 #' @describeIn miniPCH.class printing
 #'
 #' @examples
 print.miniPCH <- function(obj){
-
+  if("lambda" %in% names(obj)){
+    text <- sprintf(
+      "A miniPCH object\ndescribing a survival distribution with piecewise constant hazards defined on %i time intervals:\n%s\nand hazards:\n%s",
+      length(obj$t),
+      paste0("[", obj$t, ", ", c(obj$t[-1], Inf), ")", collapse = ", "),
+      paste0(obj$lambda, collapse=", ")
+    )
+  } else {
+    text <- sprintf(
+      "A miniPCH object\ndescribing a distibution for time to absorption with %i states and %i absoribing states and piecewise constant transition rates on %i time intervals:\n%s",
+      length(obj$pi),
+      sum(obj$abs),
+      length(obj$t),
+      paste0("[", obj$t, ", ", c(obj$t[-1], Inf), ")", collapse = ", ")
+    )
+  }
+  cat(text)
+  invisible(text)
 }
 
 #' @return
-#' a ggplot object
+#' for autoplot: a ggplot object
 #'
 #' @exportS3Method ggplot2::autoplot
 #'

@@ -24,7 +24,7 @@
 \method{autoplot}{miniPCH}(obj, what = c("d", "s", "h"), from, to, n = 1001)
 }
 \arguments{
-\item{obj}{}
+\item{obj}{miniPCH object}
 
 \item{what}{what to plot ("d", "p", "q", "h", "ch", "s")}
 
@@ -39,21 +39,21 @@
 \item{...}{passed on to base::plot}
 }
 \value{
-NULL, invisibly
+for plot: NULL, invisibly
 
-a ggplot object
+for summary: a list
+
+for print: the printed text, invisibly
+
+for autoplot: a ggplot object
 }
 \description{
 miniPCH class
-
-Title
-
-Title
 }
 \details{
-The layout uses the mfrow argument to par and defaults to all plots in one
-row. The layout can be overwritten by passing the mfrow argument, that is
-passed as is to an internal call to par.
+The layout in print uses the mfrow argument to par and defaults to all plots
+in one row. The layout can be overwritten by passing the mfrow argument, that
+is passed as is to an internal call to par.
 }
 \section{Functions}{
 \itemize{
@@ -88,4 +88,6 @@ abs <- c(0,0,1)
 my_obj <- multistate_functions(Tint, Q, pi, abs)
 plot(my_obj)
 autoplot(my_obj)
+summary(my_obj)
+print(my_obj)
 }
