@@ -118,8 +118,6 @@ plot_cadlag <- function(x, fun, jumps, ...){
 #' @export
 #'
 #' @describeIn miniPCH.class summary
-#'
-#' @examples
 summary.miniPCH <- function(obj){
   obj[names(obj) %in% c("t", "lambda", "Q", "pi", "abs", "discrete")]
 }
@@ -128,8 +126,6 @@ summary.miniPCH <- function(obj){
 #' @export
 #'
 #' @describeIn miniPCH.class printing
-#'
-#' @examples
 print.miniPCH <- function(obj){
   if("lambda" %in% names(obj)){
     text <- sprintf(
