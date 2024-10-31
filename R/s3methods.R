@@ -224,7 +224,7 @@ autoplot.miniPCH <- function(object, ..., what=c("d", "s", "h"), from, to, n=100
 
         # sort by is stable, so values at jump points are not re-ordered
         rbind(data_cont, data_jumps) |>
-          sort_by(~x)
+          (\(dat){dat[order(dat$x), ]})()
       } else {
         data.frame(
           x=x,
