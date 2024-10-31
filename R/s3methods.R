@@ -1,6 +1,7 @@
 #' miniPCH class
 #'
-#' @param obj miniPCH object
+#' @param x miniPCH object
+#' @param object miniPCH object
 #' @param what what to plot ("d", "p", "q", "h", "ch", "s")
 #' @param from lower x-Axis limit
 #' @param to upper x-Axis limit
@@ -22,8 +23,6 @@
 #'
 #' @examples
 #' my_pch <- pch_functions(c(0, 3), c(2, 0.1))
-#' plot(my_pch)
-#' autoplot(my_pch)
 #'
 #' Tint <- c(0,3)
 #' Q <- array(
@@ -42,45 +41,53 @@
 #' abs <- c(0,0,1)
 #'
 #' my_obj <- multistate_functions(Tint, Q, pi, abs)
+#'
+#' plot(my_pch)
+#' summary(my_pch)
+#' print(my_pch)
+#'
 #' plot(my_obj)
-#' autoplot(my_obj)
 #' summary(my_obj)
 #' print(my_obj)
-plot.miniPCH <- function(obj, what=c("d", "s", "h"), from, to, mfrow=c(1,length(what)), n=1001, ...){
+#'
+#' library(ggplot2)
+#' autoplot(my_pch)
+#' autoplot(my_obj)
+plot.miniPCH <- function(x, ...,what=c("d", "s", "h"), from, to, mfrow=c(1,length(what)), n=1001){
   if(!all(what %in% c("d", "p", "q", "h", "ch", "s"))){
     stop(gettext("Argument what has to be a character vector containing only d, p, q, h, ch, s, to plot density, cdf, quantiles, hazard, cumulative hazard or survival function"))
   }
-  if(("q" %in% what) & (!("q" %in% names(obj)))){
+  if(("q" %in% what) & (!("q" %in% names(x)))){
     stop(gettext("Plotting quantiles is not supported for this object."))
   }
 
   # heuristic to set plot interval
   # start at lowest time interval
   if(missing(from)){
-    from <- min(obj$t)
+    from <- min(x$t)
   }
   # plot to 90% percentile or 1.5 times the range of given time points,
   # whichever is later
   if(missing(to)){
-    if("q" %in% names(obj)){
-      q <- obj$q(0.9)
+    if("q" %in% names(x)){
+      q <- x$q(0.9)
     } else {
-      q <- uniroot(\(t){obj$s(t)-0.1}, lower=0, upper=1, extendInt = "downX")$root
+      q <- uniroot(\(t){x$s(t)-0.1}, lower=0, upper=1, extendInt = "downX")$root
     }
-    t_max <- max(obj$t) + 0.5*(max(obj$t)-min(obj$t))
+    t_max <- max(x$t) + 0.5*(max(x$t)-min(x$t))
     to <- max(q, t_max)
   }
 
   par(mfrow=mfrow)
 
-  x <- seq(from, to, length.out=n)
+  t <- seq(from, to, length.out=n)
   for(i in what){
     if(i %in% c("d", "h")){
-      plot_cadlag(x, obj[[i]], obj$t, xlab="t", ylab=i, ...)
+      plot_cadlag(t, x[[i]], x$t, xlab="t", ylab=i, ...)
     } else {
-      plot(x, obj[[i]](x), xlab="t", ylab=i,  type="l", ...)
+      plot(t, x[[i]](t), xlab="t", ylab=i,  type="l", ...)
     }
-    abline(v=obj$t, col="grey")
+    abline(v=x$t, col="grey")
   }
 
   invisible(NULL)
@@ -118,29 +125,29 @@ plot_cadlag <- function(x, fun, jumps, ...){
 #' @export
 #'
 #' @describeIn miniPCH.class summary
-summary.miniPCH <- function(obj){
-  obj[names(obj) %in% c("t", "lambda", "Q", "pi", "abs", "discrete")]
+summary.miniPCH <- function(object, ...){
+  object[names(object) %in% c("t", "lambda", "Q", "pi", "abs", "discrete")]
 }
 
 #' @return for print: the printed text, invisibly
 #' @export
 #'
 #' @describeIn miniPCH.class printing
-print.miniPCH <- function(obj){
-  if("lambda" %in% names(obj)){
+print.miniPCH <- function(x, ...){
+  if("lambda" %in% names(x)){
     text <- sprintf(
       "A miniPCH object\ndescribing a survival distribution with piecewise constant hazards defined on %i time intervals:\n%s\nand hazards:\n%s",
-      length(obj$t),
-      paste0("[", obj$t, ", ", c(obj$t[-1], Inf), ")", collapse = ", "),
-      paste0(obj$lambda, collapse=", ")
+      length(x$t),
+      paste0("[", x$t, ", ", c(x$t[-1], Inf), ")", collapse = ", "),
+      paste0(x$lambda, collapse=", ")
     )
   } else {
     text <- sprintf(
       "A miniPCH object\ndescribing a distibution for time to absorption with %i states and %i absoribing states and piecewise constant transition rates on %i time intervals:\n%s",
-      length(obj$pi),
-      sum(obj$abs),
-      length(obj$t),
-      paste0("[", obj$t, ", ", c(obj$t[-1], Inf), ")", collapse = ", ")
+      length(x$pi),
+      sum(x$abs),
+      length(x$t),
+      paste0("[", x$t, ", ", c(x$t[-1], Inf), ")", collapse = ", ")
     )
   }
   cat(text)
@@ -153,7 +160,7 @@ print.miniPCH <- function(obj){
 #' @exportS3Method ggplot2::autoplot
 #'
 #' @describeIn miniPCH.class autoplot with ggplot
-autoplot.miniPCH <- function(obj, what=c("d", "s", "h"), from, to, n=1001){
+autoplot.miniPCH <- function(object, ..., what=c("d", "s", "h"), from, to, n=1001){
   if (!requireNamespace("ggplot2", quietly = TRUE)){
     stop("Missing package 'ggplot2'.")
   }
@@ -161,55 +168,55 @@ autoplot.miniPCH <- function(obj, what=c("d", "s", "h"), from, to, n=1001){
   if(!all(what %in% c("d", "p", "q", "h", "ch", "s"))){
     stop(gettext("Argument what has to be a character vector containing only d, p, q, h, ch, s, to plot density, cdf, quantiles, hazard, cumulative hazard or survival function"))
   }
-  if(("q" %in% what) & (!("q" %in% names(obj)))){
+  if(("q" %in% what) & (!("q" %in% names(object)))){
     stop(gettext("Plotting quantiles is not supported for this object."))
   }
 
   # heuristic to set plot interval
   # start at lowest time interval
   if(missing(from)){
-    from <- min(obj$t)
+    from <- min(object$t)
   }
   # plot to 90% percentile or 1.5 times the range of given time points,
   # whichever is later
   if(missing(to)){
-    if("q" %in% names(obj)){
-      q <- obj$q(0.9)
+    if("q" %in% names(object)){
+      q <- object$q(0.9)
     } else {
-      q <- uniroot(\(t){obj$s(t)-0.1}, lower=0, upper=1, extendInt = "downX")$root
+      q <- uniroot(\(t){object$s(t)-0.1}, lower=0, upper=1, extendInt = "downX")$root
     }
-    t_max <- max(obj$t) + 0.5*(max(obj$t)-min(obj$t))
+    t_max <- max(object$t) + 0.5*(max(object$t)-min(object$t))
     to <- max(q, t_max)
   }
 
   x <- seq(from, to, length.out=n)
 
   # eps for comparison of smallest double step left of jump point
-  tmp_eps <- ceiling(log2(max(c(abs(obj$t), 2))))*.Machine$double.eps
+  tmp_eps <- ceiling(log2(max(c(abs(object$t), 2))))*.Machine$double.eps
 
   plotdata <- Map(
     \(i, name){
       if(i %in% c("d", "h")){
-        tmp_x <- setdiff(x, obj$t)
+        tmp_x <- setdiff(x, object$t)
 
         # data for continuous part
         data_cont <- data.frame(
          x=tmp_x,
-         y=obj[[i]](tmp_x),
+         y=object[[i]](tmp_x),
          jump=factor(NA, levels=c("l","r")),
          facet=name
         )
 
         # data for jumps
         data_jumps <- Map(\(j){
-          x_i <- obj$t[j]
+          x_i <- object$t[j]
           data.frame(
             x = rep(x_i, 3),
-            y = c(obj[[i]](x_i-tmp_eps), NA_real_, obj[[i]](x_i)),
+            y = c(object[[i]](x_i-tmp_eps), NA_real_, object[[i]](x_i)),
             jump = factor(c("r", NA, "l"), levels=c("l","r")),
             facet = name
           )
-        }, 1:length(obj$t)) |>
+        }, 1:length(object$t)) |>
           do.call(rbind, args=_)
 
         # first value only has a left limit
@@ -221,7 +228,7 @@ autoplot.miniPCH <- function(obj, what=c("d", "s", "h"), from, to, n=1001){
       } else {
         data.frame(
           x=x,
-          y=obj[[i]](x),
+          y=object[[i]](x),
           jump=factor(NA, levels=c("l","r")),
           facet=name
         )
@@ -236,7 +243,7 @@ autoplot.miniPCH <- function(obj, what=c("d", "s", "h"), from, to, n=1001){
     ggplot2::geom_point(ggplot2::aes(shape=jump), na.rm=TRUE) +
     ggplot2::scale_shape_manual(values=c(l=16, r=1), guide="none") +
     ggplot2::facet_wrap(~facet, scales="free_y") +
-    ggplot2::geom_vline(xintercept = obj[["t"]], lty=2) +
+    ggplot2::geom_vline(xintercept = object[["t"]], lty=2) +
     ggplot2::labs(
       x="t",
       y=character(0)

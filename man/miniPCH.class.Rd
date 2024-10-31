@@ -8,23 +8,25 @@
 \title{miniPCH class}
 \usage{
 \method{plot}{miniPCH}(
-  obj,
+  x,
+  ...,
   what = c("d", "s", "h"),
   from,
   to,
   mfrow = c(1, length(what)),
-  n = 1001,
-  ...
+  n = 1001
 )
 
-\method{summary}{miniPCH}(obj)
+\method{summary}{miniPCH}(object, ...)
 
-\method{print}{miniPCH}(obj)
+\method{print}{miniPCH}(x, ...)
 
-\method{autoplot}{miniPCH}(obj, what = c("d", "s", "h"), from, to, n = 1001)
+\method{autoplot}{miniPCH}(object, ..., what = c("d", "s", "h"), from, to, n = 1001)
 }
 \arguments{
-\item{obj}{miniPCH object}
+\item{x}{miniPCH object}
+
+\item{...}{passed on to base::plot}
 
 \item{what}{what to plot ("d", "p", "q", "h", "ch", "s")}
 
@@ -36,7 +38,7 @@
 
 \item{n}{number of points for interpolation}
 
-\item{...}{passed on to base::plot}
+\item{object}{miniPCH object}
 }
 \value{
 for plot: NULL, invisibly
@@ -66,8 +68,6 @@ is passed as is to an internal call to par.
 }}
 \examples{
 my_pch <- pch_functions(c(0, 3), c(2, 0.1))
-plot(my_pch)
-autoplot(my_pch)
 
 Tint <- c(0,3)
 Q <- array(
@@ -86,8 +86,16 @@ pi <- c(1,0,0)
 abs <- c(0,0,1)
 
 my_obj <- multistate_functions(Tint, Q, pi, abs)
+
+plot(my_pch)
+summary(my_pch)
+print(my_pch)
+
 plot(my_obj)
-autoplot(my_obj)
 summary(my_obj)
 print(my_obj)
+
+library(ggplot2)
+autoplot(my_pch)
+autoplot(my_obj)
 }
