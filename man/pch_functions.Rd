@@ -94,7 +94,7 @@ pch_cumhaz <- chpch_fun(c(0, 3), c(2, 0.1))
 pch_cumhaz(1:10)
 pch_surv <- spch_fun(c(0, 3), c(2, 0.1))
 pch_surv(1:10)
-my_pch <- pch_functions(c(0, 3), c(2, 0.1))#
+my_pch <- pch_functions(c(0, 3), c(2, 0.1))
 my_pch$t
 my_pch$r(15)
 my_pch$ch(1:10)

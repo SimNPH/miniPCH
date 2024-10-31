@@ -1,3 +1,7 @@
+# miniPCH 0.4.0
+
+* added S3 methods summary, print, plot and autoplot for miniPCH class
+
 # miniPCH 0.3.2
 
 * Fixed bug in the calculation of density and hazard in multistate functions
