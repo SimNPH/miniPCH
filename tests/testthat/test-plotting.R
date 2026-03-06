@@ -26,8 +26,12 @@ test_that("plot method outputs the correct images", {
     plot(my_obj2)
   }
 
-  vdiffr::expect_doppelganger("multistate-plot", example_plot)
   expect_error(plot(my_obj, what=c("q")))
-  vdiffr::expect_doppelganger("pch-plot", example_plot2)
   expect_error(plot(my_obj2, what=c("x")))
+
+  # skip vdiffr checks on cran and gh-actions
+  skip_on_cran()
+  skip_on_ci()
+  vdiffr::expect_doppelganger("multistate-plot", example_plot)
+  vdiffr::expect_doppelganger("pch-plot", example_plot2)
 })

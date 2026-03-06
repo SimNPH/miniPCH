@@ -21,9 +21,7 @@ test_that("autoplot method outputs the correct images", {
   gg <- ggplot2::autoplot(my_obj)
   gg2 <- ggplot2::autoplot(my_obj2)
 
-  vdiffr::expect_doppelganger("multistate-autoplot", gg)
   expect_error(ggplot2::autoplot(my_obj, what=c("q")))
-  vdiffr::expect_doppelganger("pch-autoplot", gg2)
   expect_error(ggplot2::autoplot(my_obj2, what=c("x")))
 
   with_mocked_bindings(
@@ -33,4 +31,11 @@ test_that("autoplot method outputs the correct images", {
     requireNamespace = function(package, ..., quietly=FALSE) FALSE,
     .package="base"
   )
+
+  # skip vdiffr checks on cran and gh-actions
+  skip_on_cran()
+  skip_on_ci()
+  vdiffr::expect_doppelganger("multistate-autoplot", gg)
+  vdiffr::expect_doppelganger("pch-autoplot", gg2)
+
 })

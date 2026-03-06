@@ -1,7 +1,7 @@
 Package: miniPCH
 Type: Package
 Title: Survival Distributions with Piece-Wise Constant Hazards
-Version: 0.4.0
+Version: 0.4.1
 Authors@R: c(person("Tobias", "Fellinger", email="tobias.fellinger@ages.at", role=c("aut", "cre"), comment = c(ORCID = "0000-0001-9474-2731")),
             person("Florian", "Klinglmueller", role=c("aut"), comment = c(ORCID = "0000-0002-7346-3669")))
 License: GPL (>= 3)
@@ -13,10 +13,10 @@ Description: Density, distribution function, ... hazard function, cumulative
     <doi:10.25365/thesis.76098>.
 Encoding: UTF-8
 Imports:
-    Rcpp (>= 1.0.8),
+    Rcpp (>= 1.1.1),
     checkmate
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.3
 LinkingTo: 
     Rcpp,
     RcppArmadillo
@@ -24,7 +24,7 @@ Suggests:
     testthat (>= 3.0.0),
     covr,
     withr,
-    vdiffr,
+    vdiffr (>= 1.0.9),
     ggplot2
 Config/testthat/edition: 3
 URL: https://simnph.github.io/miniPCH/, https://github.com/SimNPH/miniPCH
