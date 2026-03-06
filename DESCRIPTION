@@ -12,6 +12,8 @@ Description: Density, distribution function, ... hazard function, cumulative
     A derivation of the used algorithms can be found in my masters thesis 
     <doi:10.25365/thesis.76098>.
 Encoding: UTF-8
+Depends:
+    R (>= 4.2.0)
 Imports:
     Rcpp (>= 1.1.1),
     checkmate
