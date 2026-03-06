@@ -1,3 +1,7 @@
+# miniPCH 0.4.1
+
+* rebuilt package after changes in upstream package Rcpp
+
 # miniPCH 0.4.0
 
 * added S3 methods summary, print, plot and autoplot for miniPCH class
